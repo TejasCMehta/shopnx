@@ -27,6 +27,14 @@
     font-style: normal;
 }
 
+.dropdown{
+  text-align: left;
+}
+
+#top ul.menu .dropdown-menu a{
+  color: #222 !important;
+}
+
 /**
  * App-wide Styles
  */
