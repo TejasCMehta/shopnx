@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('shopnxApp')
-  .controller('ProductDetailsCtrl', function ($scope, $rootScope, Product, socket, $stateParams, $location, $state, $injector) {
+  .controller('ProductDetailsCtrl', function ($scope, $rootScope, Product, Category, socket, $stateParams, $location, $state, $injector) {
     var id = $stateParams.id;
     // var slug = $stateParams.slug;
     // Storing the product id into localStorage because the _id of the selected product which was passed as a hidden parameter from products won't available on page refresh
@@ -14,7 +14,7 @@ angular.module('shopnxApp')
       socket.syncUpdates('product', $scope.data);
       generateBreadCrumb('Category',data.category._id);
     });
-
+    $scope.categories = Category.all.query();
     // To shuffle throught different product variants
     $scope.i=0;
     $scope.changeIndex =function(i){

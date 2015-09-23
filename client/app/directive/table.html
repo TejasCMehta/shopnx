@@ -20,7 +20,7 @@
             <div class="row">
               <div class="col-xs-12">
                 <button type="button" class="btn btn-danger" ng-click="edit({});">New <i class="fa fa-plus"></i> </button>
-                
+
                 <span class="pull-right hidden-xs">
                   <div ng-hide="data.length>-1"><i class="fa fa-cog fa-3x fa-spin"></i>&nbsp;Loading</div>&nbsp;
                   <b>{{data.length}}</b> {{title}} found
@@ -62,8 +62,8 @@
                   </td>
                   <td>
                       <div class="btn-group">
-                        <button type="button" class="btn btn-default fa fa-edit" ng-click="edit(p);"></button>
-                        <button type="button" class="btn btn-danger fa fa-trash-o" ng-confirm-message="Are you sure to delete?" ng-confirm-click="delete(p)" item="p"></button>
+                        <a class="btn btn-default btn-sm btn-default" ng-click="edit(p);"><i class="fa fa-edit"></i></a>
+                        <a class="btn btn-default btn-sm btn-danger" ng-confirm-message="Are you sure to delete?" ng-confirm-click="delete(p)" item="p"><i class="fa fa-trash-o"></i></a>
                       </div>
                   </td>
               </tr>

@@ -86,23 +86,15 @@
 
                     <div class="box info-bar">
                         <div class="row">
-                            <div class="col-sm-12 col-md-4 products-showing">
+                            <div class="col-sm-12 col-md-5 products-showing">
                                 Showing {{products.items.length}} products in: $<strong>{{priceSlider.min}}</strong> &nbsp;-&nbsp; $<strong>{{priceSlider.max}}</strong>
                             </div>
 
-                            <div class="col-sm-12 col-md-8  products-number-sort">
+                            <div class="col-sm-12 col-md-7 text-right products-number-sort">
                                 <div class="row">
                                     <form class="form-inline">
-                                        <div class="col-md-3 col-sm-3">
-                                            <div class="products-sort-by">
-                                              <span ng-if="fl.brands">Brands:</span> <span class="tag label label-info" ng-repeat="b in fl.brands"><span>{{b.name}}</span>
-                                            <a ng-click="removeBrand();"><i class="remove glyphicon glyphicon-remove-sign glyphicon-white"></i></a></span>
-                                              <!-- <select ng-model="products.brand"  ng-change="navigate('Brand',products.brand);" ng-options="b.name for b in brands track by b._id" class="pull-right">
-                                                  <option value="">All Brands</option>
-                                              </select> -->
-                                            </div>
-                                        </div>
-                                        <div class="col-md-9 col-sm-9">
+
+                                        <div class="col-md-12 col-sm-12">
                                             <div class="products-number">
                                                 <strong>Sort</strong>
                                                 <div class="btn-group">
@@ -113,67 +105,58 @@
                                     </form>
                                 </div>
                             </div>
+
+                            <div class="col-sm-12 col-md-8  products-number-sort">
+                                <div class="products-sort-by">
+                                  <span ng-if="fl.brands">Brands:</span>
+                                  <a class="btn btn-xs btn-warning" href="" ng-click="clearPriceRange();" ng-repeat="b in fl.brands" ng-click="removeBrand();" style="margin-left:5px;"><i class="fa fa-times-circle"></i> {{b.name}}</a>
+
+                                  <!-- <select ng-model="products.brand"  ng-change="navigate('Brand',products.brand);" ng-options="b.name for b in brands track by b._id" class="pull-right">
+                                      <option value="">All Brands</option>
+                                  </select> -->
+                                </div>
+                            </div>
                         </div>
                     </div>
 
                     <div class="row products" dw-loading="products">
-
-                        <div class="col-md-4 col-sm-6" ng-repeat="product in products.items">
+                      <div class="col-md-4 col-sm-6" ng-repeat="product in products.items">
                             <div class="product">
                                 <div class="flip-container">
                                     <div class="flipper">
                                         <div class="front">
                                             <a ui-sref="productDetail({id:product._id, slug:product.slug})">
-                                                <img ng-src="/assets/img/{{product.variants[0].image}}"
-                                                    err-src="/assets/img/photo.png"
-                                                    alt="{{product.name}}" class="img-responsive">
+                                                <img src="/assets/img/product1.jpg" alt="" class="img-responsive">
                                             </a>
                                         </div>
                                         <div class="back">
-                                            <a href="detail.html">
-                                                <img src="img/product1_2.jpg" alt="" class="img-responsive">
+                                            <a ui-sref="productDetail({id:product._id, slug:product.slug})">
+                                                <img ng-src="/assets/img/product2.jpg"
+                                                    err-src="/assets/img/photo.png"
+                                                    alt="{{product.name}}"sla class="img-responsive">
                                             </a>
                                         </div>
                                     </div>
                                 </div>
-                                <a href="detail.html" class="invisible">
-                                    <img src="img/product1.jpg" alt="" class="img-responsive">
+                                <a ui-sref="productDetail({id:product._id, slug:product.slug})" class="invisible">
+                                    <img src="/assets/img/product1.jpg" alt="" class="img-responsive">
                                 </a>
-                                <div class="text">
-                                    <h3><a ui-sref="productDetail({id:product._id, slug:product.slug})">{{product.name}} {{product.variants[0].size}}</a></h3>
-                                    <p class="price">{{product.variants[0].price | currency : '$'}}<span class="slash" ng-if="product.variants[0].price!=product.variants[0].mrp">{{product.variants[0].mrp | currency : '$'}}</span></p>
+                                <div class="text text-center">
+                                    <h3><a ui-sref="productDetail({id:product._id, slug:product.slug})">{{product.name}}{{product.variants[0].size}}</a></h3>
+                                    <p class="price"><del ng-if="product.variants[0].price!=product.variants[0].mrp">{{product.variants[0].mrp | currency : '$'}}</del>{{product.variants[0].price | currency : '$'}}</p>
                                     <p class="buttons">
-                                        <a ui-sref="productDetail({id:product._id, slug:product.slug})" class="btn btn-default">View detail</a>
-                                        <a ng-click="cart.addItem(product._id, product.name, product.slug, product.variants[0].mrp, product.variants[0].price, 1, product.variants[0].image,product.category, product.variants[0].size ,true);" ng-show="checkCart(product._id)" class="btn btn-primary"><i class="fa fa-shopping-cart"></i>Add to cart</a>
-                                        <div class="btn-group">
-                                        <a ng-click="cart.addItem(product._id, product.name, product.slug, product.variants[0].mrp, product.variants[0].price, -1)" ng-hide="checkCart(product._id)" class="btn btn-primary"><i class="fa fa-shopping-cart"></i>-1</a>
+                                      <div class="btn-group">
+                                      <a ui-sref="productDetail({id:product._id, slug:product.slug})" class="btn btn-default">View detail</a>
+                                      <a ng-click="cart.addItem(product._id, product.name, product.slug, product.variants[0].mrp, product.variants[0].price, -1)" ng-hide="checkCart(product._id)" class="btn btn-primary">-</a>
 
-                                        <a ng-hide="checkCart(product._id)" class="btn btn-primary">{{getQuantity(product._id);}}</a>
+                                      <a ng-hide="checkCart(product._id)" class="btn btn-primary">{{getQuantity(product._id);}}</a>
 
-                                        <a ng-click="cart.addItem(product._id, product.name, product.slug, product.variants[0].mrp, product.variants[0].price, +1)" ng-hide="checkCart(product._id)" class="btn btn-primary"><i class="fa fa-shopping-cart"></i>+1</a>
-
-                                        </div>
+                                      <a ng-click="cart.addItem(product._id, product.name, product.slug, product.variants[0].mrp, product.variants[0].price, +1)" ng-hide="checkCart(product._id)" class="btn btn-primary">+</a>
+                                      </div>
+                                      <a ng-click="cart.addItem(product._id, product.name, product.slug, product.variants[0].mrp, product.variants[0].price, 1, product.variants[0].image,product.category, product.variants[0].size ,true);" ng-show="checkCart(product._id)" class="btn btn-primary"><i class="fa fa-shopping-cart"></i>Add to cart</a>
                                     </p>
                                 </div>
                                 <!-- /.text -->
-
-                                <div class="ribbon sale">
-                                    <div class="theribbon">SALE</div>
-                                    <div class="ribbon-background"></div>
-                                </div>
-                                <!-- /.ribbon -->
-
-                                <div class="ribbon new">
-                                    <div class="theribbon">NEW</div>
-                                    <div class="ribbon-background"></div>
-                                </div>
-                                <!-- /.ribbon -->
-
-                                <div class="ribbon gift">
-                                    <div class="theribbon">GIFT</div>
-                                    <div class="ribbon-background"></div>
-                                </div>
-                                <!-- /.ribbon -->
                             </div>
                             <!-- /.product -->
                         </div>
