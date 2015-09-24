@@ -1,53 +1,45 @@
 <link rel="stylesheet" href="bower_components/angular-tablesort/tablesort.css" />
 <form name="product_form">
-
-<div class="container">
-  <div class="row">
     <div class="col-sm-12">
-      <h1></h1>
-
+      <div class="box">
+        <h1>Products Manager</h1>
+      </div>
     </div>
-  </div>
 
-  <div class="row">
-    <div class="col-md-12">
-  <div class="row">
-    <div class="col-md-12">
-      <button type="button" class="btn btn-danger fa fa-plus" ng-click="edit({});">&nbsp;Add New</button>
-      <button type="submit" class="btn btn-info fa fa-save" ng-click="save(product);">&nbsp;    Save</button>
+  <div class="col-md-8">
+    <div class="box">
+      <button type="button" class="btn btn-danger" ng-click="edit({});"><i class="fa fa-plus"></i>&nbsp;Add New</button>
+      <button type="submit" class="btn btn-info" ng-click="save(product);"><i class="fa fa-save"></i> &nbsp;Save</button>
       &nbsp;&nbsp;<a ui-sref="productDetail({id:product._id, slug:product.slug})">{{product.name}}</a>
       <hr/>
-    </div>
-  </div>
-  <div class="row">
-  <div class="col-md-8">
-<div class="row">
-  <div class="col-md-12">
     <form class="form-horizontal" role="form">
       <div class="form-group">
-          <div class="col-md-7">
+          <div class="col-md-12">
               <div class="form-group row">
-                  <label for="id" class="col-md-1 control-label">ID</label>
-                  <div class="col-md-2">
-                      <input ng-model="product.id" type="text" disabled="" style="width:50px" class="form-control" placeholder="ID"/>
-                  </div>
-                  <label for="sku" class="col-md-1 control-label">SKU</label>
-                  <div class="col-md-3">
-                      <input ng-model="product.sku" type="text" style="width:80px" class="form-control" placeholder="SKU"/>
-                  </div>
-                  <label for="name" class="col-md-2 control-label">Name</label>
-                  <div class="col-md-3">
-                      <input ng-model="product.name" type="text" style="width:400px" class="form-control" placeholder="Name"/>
-                  </div>
+                <label for="id" class="col-md-1 control-label">ID</label>
+                <div class="col-md-2">
+                    <input ng-model="product.id" type="text" disabled="" class="form-control" placeholder="ID"/>
                 </div>
+                <label for="sku" class="col-md-1 control-label">SKU</label>
+                <div class="col-md-2">
+                    <input ng-model="product.sku" type="text" class="form-control" placeholder="SKU"/>
+                </div>
+                <label for="name" class="col-md-1 control-label text-right">Name</label>
+                <div class="col-md-5">
+                    <input ng-model="product.name" type="text" class="form-control" placeholder="Name"/>
+                </div>
+              </div>
+              <hr/>
                 <div class="form-group row">
-                  <div class="col-md-6">
-                    Category: <select ng-model="product.category" ng-options="option.name for option in categories | orderBy:'name' track by option._id" class="form-control">
+                  <label for="id" class="col-md-2 control-label">Category</label>
+                  <div class="col-md-4">
+                    <select ng-model="product.category" ng-options="option.name for option in categories | orderBy:'name' track by option._id" class="form-control">
                         <option value="">Select Category</option>
                     </select>
                   </div>
-                  <div class="col-md-6">
-                    Brand: <select ng-model="product.brand" ng-options="i.name for i in brands | orderBy:'name' track by i._id" class="form-control">
+                  <label for="id" class="col-md-1 control-label">Brand</label>
+                  <div class="col-md-4">
+                    <select ng-model="product.brand" ng-options="i.name for i in brands | orderBy:'name' track by i._id" class="form-control">
                         <option value="">Select Brand</option>
                     </select>
                   </div>
@@ -55,12 +47,8 @@
           </div>
       </div>
   </form>
-
-
-
-  </div>
-</div>
-
+<hr/>
+<div class="clearfix"/>
 <div class="panel panel-primary">
   <div class="panel-heading">Product Variants</div>
   <div class="panel-body">
@@ -79,26 +67,26 @@
         <tr ng-repeat="p in product.variants track by $index" id="{{p._id}}">
             <!-- <td><img src="img/{{p.category}}/{{p.image}}"/> </td>-->
             <td>{{$index+1}}</td>
-            <td><input type="text" ng-model="p.size" style="width:70px;"/></td>
-            <td><input type="text" ng-model="p.mrp" style="width:70px;"/></td>
-            <td><input type="text" ng-model="p.price" style="width:70px;"/></td>
-            <td><input type="text" ng-model="p.image" style="width:150px;"/></td>
+            <td><input type="text" ng-model="p.size" style="width:70px;" placeholder="Size"/></td>
+            <td><input type="text" ng-model="p.mrp" style="width:70px;" placeholder="MRP"/></td>
+            <td><input type="text" ng-model="p.price" style="width:70px;" placeholder="Price"/></td>
+            <td><input type="text" ng-model="p.image" style="width:150px;" placeholder="Image"/></td>
             <td>
                 <div class="btn-group">
-                  <button type="button" class="btn btn-danger fa fa-trash-o" ng-click="delete(p);"></button>
+                  <button type="button" class="btn btn-danger" ng-click="delete(p);"><i class="fa fa-trash-o"></i></button>
                 </div>
             </td>
         </tr>
         <tr>
             <!-- <td><img src="img/{{p.category}}/{{p.image}}"/> </td>-->
             <td>New</td>
-            <td><input type="text" ng-model="variant.size" style="width:70px;"/></td>
-            <td><input type="text" ng-model="variant.mrp" style="width:70px;"/></td>
-            <td><input type="text" ng-model="variant.price" style="width:70px;"/></td>
-            <td><input type="text" ng-model="variant.image" style="width:150px;"/></td>
+            <td><input type="text" ng-model="variant.size" style="width:70px;" placeholder="Size"/></td>
+            <td><input type="text" ng-model="variant.mrp" style="width:70px;" placeholder="MRP"/></td>
+            <td><input type="text" ng-model="variant.price" style="width:70px;" placeholder="Price"/></td>
+            <td><input type="text" ng-model="variant.image" style="width:150px;" placeholder="Image"/></td>
             <td>
                 <div class="btn-group">
-                  <button type="button" class="btn btn-danger fa fa-trash-o" ng-click="delete(p);"></button>
+                  <button type="button" class="btn btn-danger" ng-click="delete(p);"><i class="fa fa-trash-o"></i></button>
                 </div>
             </td>
         </tr>
@@ -106,9 +94,9 @@
     </table>
 </div>
 </div>
-
-
 </div>
+</div>
+
 
 <div class="col-md-4">
 <div class="panel panel-primary">
@@ -144,10 +132,5 @@
 </div> <!-- Infinite Scroll -->
 </div>
 </div>
-</div>
-</div>
-</div>
-</div>
-
 </div>
 </form>

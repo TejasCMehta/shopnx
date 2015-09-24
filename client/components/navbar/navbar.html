@@ -40,9 +40,9 @@ _________________________________________________________ -->
                   <li class="divider"></li>
                   </ul>
                 </li>
-                <li><a href="contact.html">Contact</a>
+                <li><a href="/contact">Contact</a>
                 </li>
-                <li><a href="#">Recently viewed</a>
+                <li><a href="/documentation">Documentation</a>
                 </li>
             </ul>
         </div>
@@ -91,10 +91,10 @@ _________________________________________________________ -->
 
             <a class="navbar-brand home" href="index.html" data-animate-hover="bounce">
                 <img src="img/logo.png" alt="Obaju logo" class="hidden-xs">
-                <img src="img/logo-small.png" alt="Obaju logo" class="visible-xs"><span class="sr-only">Obaju - go to homepage</span>
+                <img src="img/logo-small.png" alt="Obaju logo" class="visible-xs"><span class="sr-only">ShopNx - go to homepage</span>
             </a>
             <div class="navbar-buttons">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navigation">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navigation" ng-click="isCollapsed1 = !isCollapsed1">
                     <span class="sr-only">Toggle navigation</span>
                     <i class="fa fa-align-justify"></i>
                 </button>
@@ -108,8 +108,8 @@ _________________________________________________________ -->
         </div>
         <!--/.navbar-header -->
 
-        <div class="navbar-collapse collapse" id="navigation">
-
+        <div class="navbar-collapse collapse navbar-static-top megamenu" id="navigation">
+          <div collapse="isCollapsed1" class="navbar-collapse collapse" id="navbar-main2">
             <ul class="nav navbar-nav navbar-left">
                 <li class="dropdown yamm-fw" ng-repeat= "p in categories">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-delay="200">{{p.name}} <b class="caret"></b></a>
@@ -117,10 +117,10 @@ _________________________________________________________ -->
                         <li>
                             <div class="yamm-content">
                                 <div class="row">
-                                    <div class="col-sm-3">
-                                        <h5>All</h5>
+                                    <div class="col-sm-3" ng-repeat="c in p.sub_categories">
+                                        <!-- <h5>All</h5> -->
                                         <ul>
-                                            <li ng-repeat="c in p.sub_categories"><a href="/Category/{{c.slug}}/{{c._id}}" ng-click="hideSubMenu();">{{c.name}}</a>
+                                            <li><a href="/Category/{{c.slug}}/{{c._id}}" ng-click="hideSubMenu();">{{c.name}}</a>
                                             </li>
                                         </ul>
                                     </div>
@@ -131,7 +131,7 @@ _________________________________________________________ -->
                     </ul>
                 </li>
             </ul>
-
+          </div>
         </div>
         <!--/.nav-collapse -->
 

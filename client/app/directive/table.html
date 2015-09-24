@@ -1,30 +1,31 @@
 <link rel="stylesheet" href="bower_components/angular-tablesort/tablesort.css" />
 
-<div class="container">
+<div class="box">
   <div class="row">
     <div class="col-sm-12">
       <h1></h1>
       <div class="table-responsive">
       <div class="panel panel-primary">
         <div class="panel-heading">List of {{title}}
+
             <div class="sw-search" >
                   <div class="nav-search" id="nav-search">
-                          Filter: <span class="input-icon">
+                          <span class="input-icon">
                               <input placeholder="Filter list ..." class="nav-search-input" ng-model="filter" autocomplete="off" type="text" style="width:300px;" autofocus>
                               <i class="search-icon fa fa-search nav-search-icon"></i>
                           </span>
                   </div>
               </div>
+
+              <span class="pull-right hidden-xs">
+                <div ng-hide="data.length>-1"><i class="fa fa-cog fa-3x fa-spin"></i>&nbsp;Loading</div>&nbsp;
+                <b>{{data.length}}</b> {{title}} found &nbsp;
+              </span>
           </div>
           <div class="panel-footer">
             <div class="row">
               <div class="col-xs-12">
                 <button type="button" class="btn btn-danger" ng-click="edit({});">New <i class="fa fa-plus"></i> </button>
-
-                <span class="pull-right hidden-xs">
-                  <div ng-hide="data.length>-1"><i class="fa fa-cog fa-3x fa-spin"></i>&nbsp;Loading</div>&nbsp;
-                  <b>{{data.length}}</b> {{title}} found
-                </span>
               </div>
             </div>
           </div>

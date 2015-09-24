@@ -30,6 +30,12 @@
 .dropdown{
   text-align: left;
 }
+.btn-group:hover>.dropdown-menu {
+display: block;
+}
+.panel-footer{
+  background-color: #eee;
+}
 
 #top ul.menu .dropdown-menu a{
   color: #222 !important;

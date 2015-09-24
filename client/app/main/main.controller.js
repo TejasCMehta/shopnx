@@ -57,18 +57,30 @@ angular.module('shopnxApp')
         $scope.product = $scope.store.getProduct($stateParams.productSku);
     }
 
-    $scope.priceSlider = {
-        min: 0,
-        max: 2500,
-        ceil: 2500,
-        floor: 0
+    $scope.resetPriceRange = function(){
+      $scope.priceSlider = {
+          min: 0,
+          max: 2500,
+          ceil: 2500,
+          floor: 0
+      };
     };
 
+    $scope.resetPriceRange();
 // For Price slider
     $scope.currencyFormatting = function(value){
       return  '$ ' + value.toString();
     };
 
+    $scope.removeBrand = function(brand){
+      console.log(brand);
+      var index = $scope.fl.brands.indexOf(brand);
+      if (index > -1) {
+          $scope.fl.brands.splice(index, 1);
+          $scope.filterBrands();
+      }
+
+    }
     $scope.products = {};
     $scope.filtered = {};
     $scope.products.busy = false;
