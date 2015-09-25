@@ -1,6 +1,6 @@
-mongoexport --db angularfullstack-dev --collection products --out products.json 
-mongoexport --db angularfullstack-dev --collection categories --out categories.json 
-mongoexport --db angularfullstack-dev --collection brands --out brands.json 
+mongoexport --db angularfullstack-dev --collection products --out products.json
+mongoexport --db angularfullstack-dev --collection categories --out categories.json
+mongoexport --db angularfullstack-dev --collection brands --out brands.json
 mongoexport --db angularfullstack-dev --collection orders --out orders.json
 
 
@@ -9,3 +9,7 @@ mongoimport --db angularfullstack-dev --collection categories --file sample_data
 mongoimport --db angularfullstack-dev --collection brands --file sample_data/brands.json
 mongoimport --db angularfullstack-dev --collection orders --file sample_data/orders.json
 
+db.brands.find().forEach(function(d){ db.getSiblingDB('shopnx')['brands'].insert(d); });
+db.categories.find().forEach(function(d){ db.getSiblingDB('shopnx')['categories'].insert(d); });
+db.products.find().forEach(function(d){ db.getSiblingDB('shopnx')['products'].insert(d); });
+db.orders.find().forEach(function(d){ db.getSiblingDB('shopnx')['orders'].insert(d); });

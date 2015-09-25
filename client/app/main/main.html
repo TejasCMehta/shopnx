@@ -45,7 +45,7 @@
                 <h3 class="panel-title">Brands
                   <div class="nav-search" id="nav-search">
                           <span class="input-icon">
-                              <input placeholder="Filter Brands ..." class="nav-search-input" ng-model="filterBrand" autocomplete="off" type="text" autofocus style="width:150px">
+                              <input placeholder="Filter Brands ..." class="nav-search-input" ng-model="filterBrand" autocomplete="off" type="text" autofocus style="width:100%">
                               <i class="search-icon fa fa-search nav-search-icon"></i>
                           </span>
                   </div>
@@ -70,15 +70,6 @@
             </div>
         </div>
 
-
-
-                    <!-- *** MENUS AND FILTERS END *** -->
-
-                    <div class="banner">
-                        <a href="#">
-                            <img src="img/banner.jpg" alt="sales 2014" class="img-responsive">
-                        </a>
-                    </div>
                 </div>
 
                 <div class="col-md-9">
@@ -125,14 +116,16 @@
                                     <div class="flipper">
                                         <div class="front">
                                             <a ui-sref="productDetail({id:product._id, slug:product.slug})">
-                                                <img src="/assets/img/product1.jpg" alt="" class="img-responsive">
+                                                <img ng-src="/assets/img/{{product.variants[0].image}}"
+                                                    err-src="/assets/img/photo.png"
+                                                    alt="{{product.name}}" class="img-responsive">
                                             </a>
                                         </div>
                                         <div class="back">
                                             <a ui-sref="productDetail({id:product._id, slug:product.slug})">
-                                                <img ng-src="/assets/img/product2.jpg"
+                                                <img ng-src="/assets/img/{{product.variants[0].image}}"
                                                     err-src="/assets/img/photo.png"
-                                                    alt="{{product.name}}"sla class="img-responsive">
+                                                    alt="{{product.name}}" class="img-responsive">
                                             </a>
                                         </div>
                                     </div>
@@ -146,11 +139,11 @@
                                     <p class="buttons">
                                       <div class="btn-group">
                                       <a ui-sref="productDetail({id:product._id, slug:product.slug})" class="btn btn-default">View detail</a>
-                                      <a ng-click="cart.addItem(product._id, product.name, product.slug, product.variants[0].mrp, product.variants[0].price, -1)" ng-hide="checkCart(product._id)" class="btn btn-primary">-</a>
+                                      <a ng-click="cart.addItem(product._id, product.name, product.slug, product.variants[0].mrp, product.variants[0].price, -1)" ng-hide="checkCart(product._id)" class="btn btn-info">-</a>
 
-                                      <a ng-hide="checkCart(product._id)" class="btn btn-primary">{{getQuantity(product._id);}}</a>
+                                      <a ng-hide="checkCart(product._id)" class="btn btn-info">{{getQuantity(product._id);}}</a>
 
-                                      <a ng-click="cart.addItem(product._id, product.name, product.slug, product.variants[0].mrp, product.variants[0].price, +1)" ng-hide="checkCart(product._id)" class="btn btn-primary">+</a>
+                                      <a ng-click="cart.addItem(product._id, product.name, product.slug, product.variants[0].mrp, product.variants[0].price, +1)" ng-hide="checkCart(product._id)" class="btn btn-info">+</a>
                                       </div>
                                       <a ng-click="cart.addItem(product._id, product.name, product.slug, product.variants[0].mrp, product.variants[0].price, 1, product.variants[0].image,product.category, product.variants[0].size ,true);" ng-show="checkCart(product._id)" class="btn btn-primary"><i class="fa fa-shopping-cart"></i>Add to cart</a>
                                     </p>

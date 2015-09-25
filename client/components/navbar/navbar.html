@@ -87,11 +87,12 @@ _________________________________________________________ -->
 
 <div class="navbar navbar-default yamm" role="navigation" id="navbar">
     <div class="container">
+  <div class="col-md-12">
         <div class="navbar-header">
 
             <a class="navbar-brand home" href="index.html" data-animate-hover="bounce">
-                <img src="img/logo.png" alt="Obaju logo" class="hidden-xs">
-                <img src="img/logo-small.png" alt="Obaju logo" class="visible-xs"><span class="sr-only">ShopNx - go to homepage</span>
+                <img src="/assets/images/logo.gif" alt="Obaju logo" class="hidden-xs">
+                <img src="/assets/images/logo.gif" alt="Obaju logo" class="visible-xs"><span class="sr-only">ShopNx - go to homepage</span>
             </a>
             <div class="navbar-buttons">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navigation" ng-click="isCollapsed1 = !isCollapsed1">
@@ -152,8 +153,33 @@ _________________________________________________________ -->
         </div>
 
         <div class="collapse clearfix" id="search">
+          <form id="searchForm" class="ng-scope ng-pristine ng-valid navbar-form" role="search">
+            <div class="nav-search text-center" id="nav-search">
+              <span class="input-icon">
+                <script type="text/ng-template" id="searchTemplate.html">
+                    <a><span>{{match.model.name}}</span></a>
+                </script>
+                <div class="input-group">
+                <input class="form-control text-left" type="text" name="q" id="q" autocomplete="off"
+                placeholder="Search for a product, category or brand..."
+                ng-model="search"
+                typeahead="p as p.name for p in globalSearch($viewValue)"
+                typeahead-loading="loadingLocations"
+                typeahead-no-results="noResults"
+                typeahead-template-url="searchTemplate.html"
+                typeahead-on-select="onSelectProduct($item, $model, $label)"
+                autofocus=""
+                >
+                <span class="input-group-btn">
 
-            <form class="navbar-form" role="search">
+<button type="submit" class="btn btn-primary"><i class="fa fa-search"></i>Search</button>
+
+</span>
+              </div>
+            </span>
+          </form>
+
+            <!-- <form class="navbar-form" role="search">
                 <div class="input-group">
                     <input type="text" class="form-control" placeholder="Search">
                     <span class="input-group-btn">
@@ -162,7 +188,7 @@ _________________________________________________________ -->
 
     </span>
                 </div>
-            </form>
+            </form> -->
 
         </div>
         <!--/.nav-collapse -->
@@ -171,6 +197,6 @@ _________________________________________________________ -->
     <!-- /.container -->
 </div>
 <!-- /#navbar -->
-
+</div>
 <!-- *** NAVBAR END *** -->
 </div>

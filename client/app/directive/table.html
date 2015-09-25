@@ -25,7 +25,7 @@
           <div class="panel-footer">
             <div class="row">
               <div class="col-xs-12">
-                <button type="button" class="btn btn-danger" ng-click="edit({});">New <i class="fa fa-plus"></i> </button>
+                <button type="button" class="btn btn-danger" ng-click="edit({});">Add New <i class="fa fa-plus"></i> </button>
               </div>
             </div>
           </div>
@@ -37,7 +37,7 @@
                 <th ng-repeat="c in cols" ts-criteria="{{c.heading}} | {{c.sortType}}">
                   {{c.heading | labelCase}}
                 </th>
-                <th>Action</th>
+                <th>Edit / Remove</th>
               </tr>
           </thead>
           <tbody>
