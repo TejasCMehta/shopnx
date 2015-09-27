@@ -57,8 +57,8 @@ exports.show = function(req, res) {
 exports.create = function(req, res) {
   req.body.uid = req.user.email; // id change on every login hence email is used
   req.body.updated = Date.now();
-  if(!req.body.slug && req.body.info)
-  req.body.slug = req.body.info.toString().toLowerCase()
+  if(!req.body.slug && req.body.name)
+  req.body.slug = req.body.name.toString().toLowerCase()
                       .replace(/\s+/g, '-')        // Replace spaces with -
                       .replace(/[^\w\-]+/g, '')   // Remove all non-word chars
                       .replace(/\-\-+/g, '-')      // Replace multiple - with single -
@@ -75,8 +75,8 @@ exports.update = function(req, res) {
   if(req.body._id) { delete req.body._id; }
   req.body.uid = req.user.email; // id changes on every login hence email is used
   req.body.updated = Date.now();
-  if(!req.body.slug && req.body.info)
-  req.body.slug = req.body.info.toString().toLowerCase()
+  if(!req.body.slug && req.body.name)
+  req.body.slug = req.body.name.toString().toLowerCase()
                       .replace(/\s+/g, '-')        // Replace spaces with -
                       .replace(/[^\w\-]+/g, '')   // Remove all non-word chars
                       .replace(/\-\-+/g, '-')      // Replace multiple - with single -

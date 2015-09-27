@@ -1,3 +1,4 @@
+
 <div class="container">
 <div class="row">
   <div class="col-sm-12 text-center">
@@ -46,11 +47,11 @@ _________________________________________________________ -->
       </div>
 
       <div class="col-md-9">
-
+{{}}
           <div class="row" id="productMain">
               <div class="col-sm-6">
                   <div id="mainImage">
-                      <img src="/assets/img/detailbig1.jpg" err-src="/assets/img/photo.png" alt="{{product.slug}}" class="img-responsive">
+                      <img src="/assets/clothing/{{product.variants[0].image}}" err-src="/assets/img/photo.png" alt="/assets/clothing/{{product.variants[0].image}}" class="img-responsive">
                   </div>
 
                   <div class="ribbon sale">
@@ -68,7 +69,7 @@ _________________________________________________________ -->
               </div>
               <div class="col-sm-6">
                   <div class="box">
-                      <h1 class="text-center">{{product.name}} {{product.variants[i].size}}</h1>
+                      <h1 class="text-center">{{product.name}} (Size: {{product.variants[i].size}})</h1>
                       <p class="goToDescription"><a href="#details" class="scroll-to">Scroll to product details, material & care and sizing</a>
                       </p>
                       <p class="price"><del class="text-muted" ng-if="product.variants[0].price!=product.variants[0].mrp" >${{product.variants[i].mrp}}</del>&nbsp;${{product.variants[i].price}}</p>
@@ -89,8 +90,10 @@ _________________________________________________________ -->
 
                   <div class="row" id="thumbs">
                       <div class="col-xs-4" ng-repeat="v in product.variants" ng-click="changeIndex($index);" ng-if="v.size!=product.variants[i].size">
-                          <a href="img/detailbig1.jpg" class="thumb">
-                              <img src="/assets/img/detailsquare.jpg" alt="{{product.name}}" class="img-responsive">
+                          <a href="" class="thumb">
+                              <img src="/assets/clothing/{{v.image}}" alt="{{product.name}}" class="img-responsive">
+                              {{product.name}} (Size: {{v.size}}) 
+                              <p class="price"><del class="text-muted" ng-if="v.price!=v.mrp" >${{v.mrp}}</del>&nbsp;${{v.price}}</p>
                           </a>
                       </div>
 
@@ -114,6 +117,12 @@ _________________________________________________________ -->
                   <h4>Category</h4>
                   <ul>
                       <li>{{product.category.name}}</li>
+                  </ul>
+                  </div>
+                  <div ng-if="product.features">
+                  <h4>Details</h4>
+                  <ul>
+                      <li ng-repeat="f in product.features">{{f.key}} : {{f.val}}</li>
                   </ul>
                   </div>
                   <blockquote>

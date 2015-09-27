@@ -121,7 +121,7 @@
         </tr>
     </thead>
     <tbody>
-        <tr ng-repeat="p in products | filter:filter | limitTo:10" id="{{p._id}}" animate-on-change='p.price+p.quantity+p.packing+p.name' ng-animate="'animate'" ts-repeat>
+        <tr ng-repeat="p in products | filter:filter" id="{{p._id}}" animate-on-change='p.price+p.quantity+p.packing+p.name' ng-animate="'animate'" ts-repeat>
             <!-- <td><img src="img/{{p.category}}/{{p.image}}"/> </td>--><td>{{$index+1}}</td><td><a href=""  ng-click="productDetail(p);">{{p.name}}</a></td>
             <td>
                 <button class="btn" ng-class="{true:'btn-success', false:''}[p.active]" ng-click="changeActive(p);">{{p.active | active}}</button>
