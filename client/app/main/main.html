@@ -1,5 +1,5 @@
 <link rel="stylesheet" href="bower_components/angular-loading/angular-loading.css"/>
-<div infinite-scroll='scroll()' infinite-scroll-disabled='products.busy' infinite-scroll-distance='1'>
+
                 <div class="col-md-12">
                     <ul class="breadcrumb">
                         <li><a ui-sref="main" href="">Home</a></li>
@@ -11,8 +11,6 @@
                 </div>
 
                 <div class="col-md-3">
-                    <!-- *** MENUS AND FILTERS ***
- _________________________________________________________ -->
 
      <div class="panel panel-default sidebar-menu">
 
@@ -108,8 +106,8 @@
                             </div>
                         </div>
                     </div>
-
-                    <div class="row products" dw-loading="products">
+<div infinite-scroll='scroll()' infinite-scroll-disabled='products.busy' infinite-scroll-distance='1'>
+                    <div class="row products" dw-loading="products" dw-loading-options="{text: ''}">
                       <div class="col-md-4 col-sm-6" ng-repeat="product in products.items">
                             <div class="product">
                                 <div class="flip-container">

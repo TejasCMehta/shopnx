@@ -60,8 +60,8 @@ angular.module('shopnxApp')
     $scope.resetPriceRange = function(){
       $scope.priceSlider = {
           min: 0,
-          max: 2500,
-          ceil: 2500,
+          max: 10000,
+          ceil: 10000,
           floor: 0
       };
     };
@@ -188,11 +188,11 @@ angular.module('shopnxApp')
       if(flush){
         q.skip = 0;
         $scope.products.items = [];
-        $scope.products.busy = false;
         $scope.products.end = false;
         $scope.products.after = 0;
       }
       $loading.start('products');
+      $scope.products.busy = true;
       Product.query(q, function(data){
           for (var i = 0; i < data.length; i++) {
               $scope.products.items.push(data[i]);
