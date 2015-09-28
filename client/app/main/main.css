@@ -25,7 +25,7 @@ p.price .text-muted{
 .products .img-responsive, .thumbnail > img, .thumbnail a > img, .carousel-inner > .item > img, .carousel-inner > .item > a > img {
     height: 330px;
 }
-div.front {
+/*div.front {
 	text-align: center;
 }*/
 em {
