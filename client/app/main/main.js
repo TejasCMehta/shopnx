@@ -4,7 +4,7 @@ angular.module('shopnxApp')
   .config(function ($stateProvider) {
     $stateProvider
       .state('main', {
-        title: 'Shop for your daily grocery online',
+        title: 'Fastest shopping experience in a Fashion Store',
         url: '/',
         templateUrl: 'app/main/main.html',
         controller: 'MainCtrl',
