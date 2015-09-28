@@ -22,7 +22,7 @@ p.price .text-muted{
 	max-height: 350px;
 	width: auto;
 }
-/*.img-responsive, .thumbnail > img, .thumbnail a > img, .carousel-inner > .item > img, .carousel-inner > .item > a > img {
+.products .img-responsive, .thumbnail > img, .thumbnail a > img, .carousel-inner > .item > img, .carousel-inner > .item > a > img {
     height: 330px;
 }
 div.front {
