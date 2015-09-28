@@ -65,7 +65,7 @@
     </thead>
     <tbody>
         <tr ng-repeat="p in product.variants track by $index" id="{{p._id}}">
-            <!-- <td><img src="img/{{p.category}}/{{p.image}}"/> </td>-->
+            <!-- <td><img src="images/{{p.category}}/{{p.image}}"/> </td>-->
             <td>{{$index+1}}</td>
             <td><input type="text" ng-model="p.size" style="width:70px;" placeholder="Size"/></td>
             <td><input type="text" ng-model="p.mrp" style="width:70px;" placeholder="MRP"/></td>
@@ -78,7 +78,7 @@
             </td>
         </tr>
         <tr>
-            <!-- <td><img src="img/{{p.category}}/{{p.image}}"/> </td>-->
+            <!-- <td><img src="images/{{p.category}}/{{p.image}}"/> </td>-->
             <td>New</td>
             <td><input type="text" ng-model="variant.size" style="width:70px;" placeholder="Size"/></td>
             <td><input type="text" ng-model="variant.mrp" style="width:70px;" placeholder="MRP"/></td>
@@ -122,7 +122,7 @@
     </thead>
     <tbody>
         <tr ng-repeat="p in products | filter:filter" id="{{p._id}}" animate-on-change='p.price+p.quantity+p.packing+p.name' ng-animate="'animate'" ts-repeat>
-            <!-- <td><img src="img/{{p.category}}/{{p.image}}"/> </td>--><td>{{$index+1}}</td><td><a href=""  ng-click="productDetail(p);">{{p.name}}</a></td>
+            <!-- <td><img src="images/{{p.category}}/{{p.image}}"/> </td>--><td>{{$index+1}}</td><td><a href=""  ng-click="productDetail(p);">{{p.name}}</a></td>
             <td>
                 <button class="btn" ng-class="{true:'btn-success', false:''}[p.active]" ng-click="changeActive(p);">{{p.active | active}}</button>
             </td>
