@@ -1,10 +1,28 @@
 <div class="container">
-  <p>The delete user and user index api routes are restricted to users with the 'admin' role.</p>
-  <ul class="list-group">
-    <li class="list-group-item" ng-repeat="user in users">
-        <strong>{{user.name}}</strong><br>
-        <span class="text-muted">{{user.email}}</span>
-        <a ng-click="delete(user)" class="trash"><span class="glyphicon glyphicon-trash pull-right"></span></a>
-    </li>
-  </ul>
+  <div class="row">
+          <p class="text-center"><em>This shop settings page is restricted to users with the 'admin' role.</em></p>
+    <div class="col-md-3"></div>
+    <div class="col-md-6">
+        <div class="box">
+            <h1>Payment Option</h1>
+      <form class="form" name="form" ng-submit="savePaypal(settings)" novalidate>
+
+        <div class="form-group">
+          <label>Paypal Email ID</label>
+
+          <input type="text" name="paypal" class="form-control" ng-model="settings.paypal"
+                 mongoose-error placeholder="Paypal Email"/>
+          <p class="help-block" ng-show="form.paypal.$error.mongoose">
+              {{ errors.other }}
+          </p>
+        </div>
+
+        <p class="help-block"> {{ message }} </p>
+
+        <button class="btn btn-lg btn-warning" type="submit">Save Payment Method</button>
+      </form>
+    </div>
+  </div>
+  <div class="col-md-3"></div>
+</div>
 </div>

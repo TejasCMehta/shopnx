@@ -7,8 +7,15 @@
 
 var Thing = require('../api/thing/thing.model');
 var User = require('../api/user/user.model');
+var Setting = require('../api/setting/setting.model');
 
-Thing.find({}).remove(function() {
+if(Setting.find().count() == 0){
+  Setting.create({
+    paypal : '2lessons@gmail.com'
+  });
+}
+
+if(Thing.find().count() == 0){
   Thing.create({
     name : 'Development Tools',
     info : 'Integration with popular tools such as Bower, Grunt, Karma, Mocha, JSHint, Node Inspector, Livereload, Protractor, Jade, Stylus, Sass, CoffeeScript, and Less.'
@@ -28,9 +35,9 @@ Thing.find({}).remove(function() {
     name : 'Deployment Ready',
     info : 'Easily deploy your app to Heroku or Openshift with the heroku and openshift subgenerators'
   });
-});
+};
 
-User.find({}).remove(function() {
+if(User.find().count() == 0){
   User.create({
     provider: 'local',
     name: 'Test User',
@@ -46,4 +53,4 @@ User.find({}).remove(function() {
       console.log('finished populating users');
     }
   );
-});
+};

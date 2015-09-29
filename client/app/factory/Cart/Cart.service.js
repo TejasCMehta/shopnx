@@ -237,8 +237,14 @@
   };
 
   angular.module('shopnxApp')
-    .factory('Cart', function () {
+    .factory('Cart', function (Setting) {
       var myCart = new ShoppingCart('ShopNx');
       myCart.addCheckoutParameters('PayPal', '2lessons@gmail.com');
+      var settings = Setting.query().$promise.then(function(res){
+          myCart.addCheckoutParameters('PayPal', res[0].paypal);
+      }, function (err) {
+          console.log("fail", err);
+      });
+      // console.log(myCart);
       return { cart: myCart };
     });

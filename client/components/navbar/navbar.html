@@ -28,6 +28,9 @@ _________________________________________________________ -->
                     <a href="/order"><i class="fa fa-road">&nbsp;</i>Orders</a>
                   </li>
                   <li class="divider"></li>
+                  <li ng-show="isAdmin()" ng-class="{active: isActive('/admin')}">
+                    <a href="/admin"><i class="fa fa-user">&nbsp;</i>Shop Settings</a>
+                  </li>
                   <li ng-show="isAdmin()" ng-class="{active: isActive('/customer')}">
                     <a href="/customer"><i class="fa fa-user">&nbsp;</i>Customers</a>
                   </li>
