@@ -19,10 +19,10 @@ angular.module('shopnxApp')
   .factory('SortOptions', [function() {
     var obj = {};
     obj.server= [
-       {name:'Price Asc', val:{'variants.price':1}},
-       {name:'Price Desc', val:{'variants.price':-1}},
-       {name:'Name Asc', val:{'name':1}},
-       {name:'Name Desc', val:{'name':-1}}
+       {name:'Low Price', val:{'variants.price':1}},
+       {name:'Hign Price', val:{'variants.price':-1}},
+       {name:'Name (A-Z)', val:{'name':1}},
+       {name:'Name (Z-A)', val:{'name':-1}}
     ];
     obj.client= [
        {name:'Price Asc', val:'variants[0].price'},
