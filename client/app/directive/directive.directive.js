@@ -12,6 +12,7 @@ angular.module('shopnxApp')
         scope.title = attrs.api+'s';
         var cols = JSON.parse(attrs.cols);
         var obj = [];
+        scope.noedit = attrs.noedit;
         angular.forEach(cols, function(o) {
           // var k,v;
           angular.forEach(o, function(v, k) {

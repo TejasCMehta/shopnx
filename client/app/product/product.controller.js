@@ -5,13 +5,7 @@ angular.module('shopnxApp')
     var cols = [
       {heading:'sku',dataType:'text', sortType:'lowercase'},
       {heading:'name',dataType:'text', sortType:'lowercase'},
-      {heading:'nameLower',dataType:'text', sortType:'lowercase'},
-      {heading:'slug',dataType:'text', sortType:'lowercase'},
-      {heading:'status',dataType:'text', sortType:'lowercase'},
-      {heading:'info',dataType:'text', sortType:'lowercase'},
-      {heading:'uid',dataType:'text', sortType:'lowercase'},
-      {heading:'active',dataType:'boolean', sortType:'lowercase'},
-      {heading:'img',dataType:'text', sortType:'lowercase'}
+      {heading:'info',dataType:'text', sortType:'lowercase'}
     ];
     // var cols = ['sku','name','nameLower','slug','status','info','uid', 'active','img'];
     $scope.products = [];
@@ -19,16 +13,16 @@ angular.module('shopnxApp')
     $scope.variant = {};
     $scope.product.variants = [];
     // $scope.subcategories = [];
-    $scope.products =Product.query(function() {
+    $scope.products =Product.query({sort:{updated: -1}}, function() {
       // console.log(data);
-      socket.syncUpdates('product', $scope.data);
+      socket.syncUpdates('product', $scope.products);
     });
 
     $scope.categories = Category.query(function() {
-      socket.syncUpdates('category', $scope.data);
+      socket.syncUpdates('category', $scope.categories);
     });
     $scope.brands = Brand.query(function() {
-      socket.syncUpdates('brand', $scope.data);
+      socket.syncUpdates('brand', $scope.brands);
     });
     $scope.edit = function(product) {
       var title; if(product.name){ title = 'Editing ' + product.name;} else{ title = 'Add New';}

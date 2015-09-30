@@ -26,6 +26,11 @@
     font-weight: normal;
     font-style: normal;
 }
+/* To fix tablesort plugin text while data is loading it shows No data */
+.showIfLast td:after {
+    content: "" !important;
+}
+/* To fix tablesort plugin */
 
 .dropdown{
   text-align: left;
